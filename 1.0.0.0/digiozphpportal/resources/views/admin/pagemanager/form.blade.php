@@ -1,6 +1,6 @@
 @section('head')
-<script src="{{url('/js/tinymce/jquery.tinymce.min.js')}}"></script>
-    <script src="{{url('/js/tinymce/tinymce.min.js')}}"></script>
+<script src="{{ asset('/js/tinymce/jquery.tinymce.min.js') }}"></script>
+    <script src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
     <script>tinymce.init({ 
         selector:'#body', 
         height: 500,
