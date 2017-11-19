@@ -6,6 +6,9 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\UserRole;
+use App\Models\Role;
+use App\Models\Profile;
 
 class RegisterController extends Controller
 {
@@ -62,10 +65,37 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        // Create User
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+
+        // Get user record
+        $user_db = User::where('email', $user->email)->first()->toarray();
+
+        if ($user_db != null)
+        {
+            // Create a profile record for the above Admin User
+            Profile::create(array(
+                'user_id' => $user_db['id'],
+                'middle_name' => '',
+                'first_name' => '',
+                'last_name' => '',
+            ));
+
+            // Get the Administrator Role to assign to above user
+            $role = Role::where('name', 'Standard Members')->first()->toarray();
+
+            // Add role to the Admin User
+            UserRole::create(array(
+                'user_id' => $user_db['id'],
+                'role_id' => $role['id'],
+            ));
+        }
+
+        return $user;
     }
 }
