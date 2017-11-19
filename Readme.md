@@ -6,6 +6,7 @@ The DigiOz PHP Portal is a Laravel Framework based Content Management System (CM
 
 - Create a database called digiozphpportal
 - Run the command "php artisan migrate" to generate the database tables
+- Run the command "php artisan db:seed" to pre-populate the database tables with necessary entries
 - Run the site and enjoy!
 
 ### Prerequisites
