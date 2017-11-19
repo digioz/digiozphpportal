@@ -97,6 +97,12 @@ class PageManagerController extends Controller
         $user = Auth::user();
         $request->request->add(['user_id' => $user->id]);
 
+        // Set to false if isencrypted not checked
+        if ($request->input('visible') == null)
+        {
+            $request->request->add(['visible' => false]);
+        }
+
         request()->validate([
             'title' => 'required',
             'url' => 'required',

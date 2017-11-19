@@ -55,9 +55,9 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('visible', 'Visible', ['class' => 'control-label col-md-2']) !!}
+            {!!Form::label('visible', 'Visible', ['class' => 'control-label col-md-2']) !!}
             <div class="col-md-10">
-                {!! Form::checkbox('visible', 1, array('class' => 'form-control')) !!}
+                {{ Form::checkbox('visible') }}
             </div>
         </div>
 

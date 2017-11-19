@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Config;
+use Illuminate\Support\Facades\Crypt;
 
 class ConfigurationManagerController extends Controller
 {
@@ -45,6 +46,15 @@ class ConfigurationManagerController extends Controller
             'configvalue' => 'required',
         ]);
 
+        // Encrypt value if needed
+        if ($request->input('isencrypted') == true)
+        {
+            $config_value = $request->input('configvalue');
+            $config_value = Crypt::encryptString($config_value);
+
+            $request->merge(array('configvalue' => $config_value));
+        }
+
         Config::create($request->all());
         return redirect()->route('configurationmanager.index')
                         ->with('success','Configuration entry added successfully');
@@ -83,11 +93,25 @@ class ConfigurationManagerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Set to false if isencrypted not checked
+        if ($request->input('isencrypted') == null)
+        {
+            $request->request->add(['isencrypted' => false]);
+        }
+
         request()->validate([
             'configkey' => 'required',
             'configvalue' => 'required',
-            'isencrypted' => 'required',
         ]);
+
+        // Encrypt value if needed
+        if ($request->input('isencrypted') == true)
+        {
+            $config_value = $request->input('configvalue');
+            $config_value = Crypt::encryptString($config_value);
+
+            $request->merge(array('configvalue' => $config_value));
+        }
 
         Config::find($id)->update($request->all());
         return redirect()->route('configurationmanager.index')
