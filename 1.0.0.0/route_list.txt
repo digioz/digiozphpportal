@@ -1,0 +1,422 @@
++--------+-----------+------------------------------------------------------------------------+--------------------------------------+---------------------------------------------------------------------------+----------------+
+| Domain | Method    | URI                                                                    | Name                                 | Action                                                                    | Middleware     |
++--------+-----------+------------------------------------------------------------------------+--------------------------------------+---------------------------------------------------------------------------+----------------+
+|        | GET|HEAD  | /                                                                      | welcome                              | App\Http\Controllers\HomeController@index                                 | web            |
+|        | GET|HEAD  | admin                                                                  | admin.index                          | Closure                                                                   | web,auth.admin |
+|        | POST      | admin/announcementmanager                                              | announcementmanager.store            | App\Http\Controllers\Admin\AnnouncementsManagerController@store           | web,auth.admin |
+|        | GET|HEAD  | admin/announcementmanager                                              | announcementmanager.index            | App\Http\Controllers\Admin\AnnouncementsManagerController@index           | web,auth.admin |
+|        | GET|HEAD  | admin/announcementmanager/create                                       | announcementmanager.create           | App\Http\Controllers\Admin\AnnouncementsManagerController@create          | web,auth.admin |
+|        | DELETE    | admin/announcementmanager/{announcementmanager}                        | announcementmanager.destroy          | App\Http\Controllers\Admin\AnnouncementsManagerController@destroy         | web,auth.admin |
+|        | PUT|PATCH | admin/announcementmanager/{announcementmanager}                        | announcementmanager.update           | App\Http\Controllers\Admin\AnnouncementsManagerController@update          | web,auth.admin |
+|        | GET|HEAD  | admin/announcementmanager/{announcementmanager}                        | announcementmanager.show             | App\Http\Controllers\Admin\AnnouncementsManagerController@show            | web,auth.admin |
+|        | GET|HEAD  | admin/announcementmanager/{announcementmanager}/edit                   | announcementmanager.edit             | App\Http\Controllers\Admin\AnnouncementsManagerController@edit            | web,auth.admin |
+|        | POST      | admin/chatmanager                                                      | chatmanager.store                    | App\Http\Controllers\Admin\ChatManagerController@store                    | web,auth.admin |
+|        | GET|HEAD  | admin/chatmanager                                                      | chatmanager.index                    | App\Http\Controllers\Admin\ChatManagerController@index                    | web,auth.admin |
+|        | GET|HEAD  | admin/chatmanager/create                                               | chatmanager.create                   | App\Http\Controllers\Admin\ChatManagerController@create                   | web,auth.admin |
+|        | PUT|PATCH | admin/chatmanager/{chatmanager}                                        | chatmanager.update                   | App\Http\Controllers\Admin\ChatManagerController@update                   | web,auth.admin |
+|        | GET|HEAD  | admin/chatmanager/{chatmanager}                                        | chatmanager.show                     | App\Http\Controllers\Admin\ChatManagerController@show                     | web,auth.admin |
+|        | DELETE    | admin/chatmanager/{chatmanager}                                        | chatmanager.destroy                  | App\Http\Controllers\Admin\ChatManagerController@destroy                  | web,auth.admin |
+|        | GET|HEAD  | admin/chatmanager/{chatmanager}/edit                                   | chatmanager.edit                     | App\Http\Controllers\Admin\ChatManagerController@edit                     | web,auth.admin |
+|        | GET|HEAD  | admin/commentconfigmanager                                             | commentconfigmanager.index           | App\Http\Controllers\Admin\CommentConfigManagerController@index           | web,auth.admin |
+|        | POST      | admin/commentconfigmanager                                             | commentconfigmanager.store           | App\Http\Controllers\Admin\CommentConfigManagerController@store           | web,auth.admin |
+|        | GET|HEAD  | admin/commentconfigmanager/create                                      | commentconfigmanager.create          | App\Http\Controllers\Admin\CommentConfigManagerController@create          | web,auth.admin |
+|        | GET|HEAD  | admin/commentconfigmanager/{commentconfigmanager}                      | commentconfigmanager.show            | App\Http\Controllers\Admin\CommentConfigManagerController@show            | web,auth.admin |
+|        | PUT|PATCH | admin/commentconfigmanager/{commentconfigmanager}                      | commentconfigmanager.update          | App\Http\Controllers\Admin\CommentConfigManagerController@update          | web,auth.admin |
+|        | DELETE    | admin/commentconfigmanager/{commentconfigmanager}                      | commentconfigmanager.destroy         | App\Http\Controllers\Admin\CommentConfigManagerController@destroy         | web,auth.admin |
+|        | GET|HEAD  | admin/commentconfigmanager/{commentconfigmanager}/edit                 | commentconfigmanager.edit            | App\Http\Controllers\Admin\CommentConfigManagerController@edit            | web,auth.admin |
+|        | GET|HEAD  | admin/commentmanager                                                   | commentmanager.index                 | App\Http\Controllers\Admin\CommentManagerController@index                 | web,auth.admin |
+|        | POST      | admin/commentmanager                                                   | commentmanager.store                 | App\Http\Controllers\Admin\CommentManagerController@store                 | web,auth.admin |
+|        | GET|HEAD  | admin/commentmanager/create                                            | commentmanager.create                | App\Http\Controllers\Admin\CommentManagerController@create                | web,auth.admin |
+|        | GET|HEAD  | admin/commentmanager/{commentmanager}                                  | commentmanager.show                  | App\Http\Controllers\Admin\CommentManagerController@show                  | web,auth.admin |
+|        | PUT|PATCH | admin/commentmanager/{commentmanager}                                  | commentmanager.update                | App\Http\Controllers\Admin\CommentManagerController@update                | web,auth.admin |
+|        | DELETE    | admin/commentmanager/{commentmanager}                                  | commentmanager.destroy               | App\Http\Controllers\Admin\CommentManagerController@destroy               | web,auth.admin |
+|        | GET|HEAD  | admin/commentmanager/{commentmanager}/edit                             | commentmanager.edit                  | App\Http\Controllers\Admin\CommentManagerController@edit                  | web,auth.admin |
+|        | GET|HEAD  | admin/commentpostsmanager                                              | commentpostsmanager.index            | App\Http\Controllers\Admin\CommentPostsManagerController@index            | web,auth.admin |
+|        | POST      | admin/commentpostsmanager                                              | commentpostsmanager.store            | App\Http\Controllers\Admin\CommentPostsManagerController@store            | web,auth.admin |
+|        | GET|HEAD  | admin/commentpostsmanager/create                                       | commentpostsmanager.create           | App\Http\Controllers\Admin\CommentPostsManagerController@create           | web,auth.admin |
+|        | DELETE    | admin/commentpostsmanager/{commentpostsmanager}                        | commentpostsmanager.destroy          | App\Http\Controllers\Admin\CommentPostsManagerController@destroy          | web,auth.admin |
+|        | PUT|PATCH | admin/commentpostsmanager/{commentpostsmanager}                        | commentpostsmanager.update           | App\Http\Controllers\Admin\CommentPostsManagerController@update           | web,auth.admin |
+|        | GET|HEAD  | admin/commentpostsmanager/{commentpostsmanager}                        | commentpostsmanager.show             | App\Http\Controllers\Admin\CommentPostsManagerController@show             | web,auth.admin |
+|        | GET|HEAD  | admin/commentpostsmanager/{commentpostsmanager}/edit                   | commentpostsmanager.edit             | App\Http\Controllers\Admin\CommentPostsManagerController@edit             | web,auth.admin |
+|        | POST      | admin/configurationmanager                                             | configurationmanager.store           | App\Http\Controllers\Admin\ConfigurationManagerController@store           | web,auth.admin |
+|        | GET|HEAD  | admin/configurationmanager                                             | configurationmanager.index           | App\Http\Controllers\Admin\ConfigurationManagerController@index           | web,auth.admin |
+|        | GET|HEAD  | admin/configurationmanager/create                                      | configurationmanager.create          | App\Http\Controllers\Admin\ConfigurationManagerController@create          | web,auth.admin |
+|        | DELETE    | admin/configurationmanager/{configurationmanager}                      | configurationmanager.destroy         | App\Http\Controllers\Admin\ConfigurationManagerController@destroy         | web,auth.admin |
+|        | PUT|PATCH | admin/configurationmanager/{configurationmanager}                      | configurationmanager.update          | App\Http\Controllers\Admin\ConfigurationManagerController@update          | web,auth.admin |
+|        | GET|HEAD  | admin/configurationmanager/{configurationmanager}                      | configurationmanager.show            | App\Http\Controllers\Admin\ConfigurationManagerController@show            | web,auth.admin |
+|        | GET|HEAD  | admin/configurationmanager/{configurationmanager}/edit                 | configurationmanager.edit            | App\Http\Controllers\Admin\ConfigurationManagerController@edit            | web,auth.admin |
+|        | GET|HEAD  | admin/databaseutilities                                                | databaseutilities.index              | App\Http\Controllers\Admin\DatabaseUtilitiesController@index              | web,auth.admin |
+|        | POST      | admin/databaseutilities                                                | databaseutilities.store              | App\Http\Controllers\Admin\DatabaseUtilitiesController@store              | web,auth.admin |
+|        | GET|HEAD  | admin/databaseutilities/create                                         | databaseutilities.create             | App\Http\Controllers\Admin\DatabaseUtilitiesController@create             | web,auth.admin |
+|        | DELETE    | admin/databaseutilities/{databaseutility}                              | databaseutilities.destroy            | App\Http\Controllers\Admin\DatabaseUtilitiesController@destroy            | web,auth.admin |
+|        | PUT|PATCH | admin/databaseutilities/{databaseutility}                              | databaseutilities.update             | App\Http\Controllers\Admin\DatabaseUtilitiesController@update             | web,auth.admin |
+|        | GET|HEAD  | admin/databaseutilities/{databaseutility}                              | databaseutilities.show               | App\Http\Controllers\Admin\DatabaseUtilitiesController@show               | web,auth.admin |
+|        | GET|HEAD  | admin/databaseutilities/{databaseutility}/edit                         | databaseutilities.edit               | App\Http\Controllers\Admin\DatabaseUtilitiesController@edit               | web,auth.admin |
+|        | POST      | admin/filemanager                                                      | filemanager.store                    | App\Http\Controllers\Admin\FileManagerController@store                    | web,auth.admin |
+|        | GET|HEAD  | admin/filemanager                                                      | filemanager.index                    | App\Http\Controllers\Admin\FileManagerController@index                    | web,auth.admin |
+|        | GET|HEAD  | admin/filemanager/create                                               | filemanager.create                   | App\Http\Controllers\Admin\FileManagerController@create                   | web,auth.admin |
+|        | DELETE    | admin/filemanager/{filemanager}                                        | filemanager.destroy                  | App\Http\Controllers\Admin\FileManagerController@destroy                  | web,auth.admin |
+|        | PUT|PATCH | admin/filemanager/{filemanager}                                        | filemanager.update                   | App\Http\Controllers\Admin\FileManagerController@update                   | web,auth.admin |
+|        | GET|HEAD  | admin/filemanager/{filemanager}                                        | filemanager.show                     | App\Http\Controllers\Admin\FileManagerController@show                     | web,auth.admin |
+|        | GET|HEAD  | admin/filemanager/{filemanager}/edit                                   | filemanager.edit                     | App\Http\Controllers\Admin\FileManagerController@edit                     | web,auth.admin |
+|        | POST      | admin/linkcategorymanager                                              | linkcategorymanager.store            | App\Http\Controllers\Admin\LinkCategoryManagerController@store            | web,auth.admin |
+|        | GET|HEAD  | admin/linkcategorymanager                                              | linkcategorymanager.index            | App\Http\Controllers\Admin\LinkCategoryManagerController@index            | web,auth.admin |
+|        | GET|HEAD  | admin/linkcategorymanager/create                                       | linkcategorymanager.create           | App\Http\Controllers\Admin\LinkCategoryManagerController@create           | web,auth.admin |
+|        | PUT|PATCH | admin/linkcategorymanager/{linkcategorymanager}                        | linkcategorymanager.update           | App\Http\Controllers\Admin\LinkCategoryManagerController@update           | web,auth.admin |
+|        | DELETE    | admin/linkcategorymanager/{linkcategorymanager}                        | linkcategorymanager.destroy          | App\Http\Controllers\Admin\LinkCategoryManagerController@destroy          | web,auth.admin |
+|        | GET|HEAD  | admin/linkcategorymanager/{linkcategorymanager}                        | linkcategorymanager.show             | App\Http\Controllers\Admin\LinkCategoryManagerController@show             | web,auth.admin |
+|        | GET|HEAD  | admin/linkcategorymanager/{linkcategorymanager}/edit                   | linkcategorymanager.edit             | App\Http\Controllers\Admin\LinkCategoryManagerController@edit             | web,auth.admin |
+|        | GET|HEAD  | admin/linkmanager                                                      | linkmanager.index                    | App\Http\Controllers\Admin\LinkManagerController@index                    | web,auth.admin |
+|        | POST      | admin/linkmanager                                                      | linkmanager.store                    | App\Http\Controllers\Admin\LinkManagerController@store                    | web,auth.admin |
+|        | GET|HEAD  | admin/linkmanager/create                                               | linkmanager.create                   | App\Http\Controllers\Admin\LinkManagerController@create                   | web,auth.admin |
+|        | PUT|PATCH | admin/linkmanager/{linkmanager}                                        | linkmanager.update                   | App\Http\Controllers\Admin\LinkManagerController@update                   | web,auth.admin |
+|        | GET|HEAD  | admin/linkmanager/{linkmanager}                                        | linkmanager.show                     | App\Http\Controllers\Admin\LinkManagerController@show                     | web,auth.admin |
+|        | DELETE    | admin/linkmanager/{linkmanager}                                        | linkmanager.destroy                  | App\Http\Controllers\Admin\LinkManagerController@destroy                  | web,auth.admin |
+|        | GET|HEAD  | admin/linkmanager/{linkmanager}/edit                                   | linkmanager.edit                     | App\Http\Controllers\Admin\LinkManagerController@edit                     | web,auth.admin |
+|        | POST      | admin/logmanager                                                       | logmanager.store                     | App\Http\Controllers\Admin\LogController@store                            | web,auth.admin |
+|        | GET|HEAD  | admin/logmanager                                                       | logmanager.index                     | App\Http\Controllers\Admin\LogController@index                            | web,auth.admin |
+|        | GET|HEAD  | admin/logmanager/create                                                | logmanager.create                    | App\Http\Controllers\Admin\LogController@create                           | web,auth.admin |
+|        | GET|HEAD  | admin/logmanager/{logmanager}                                          | logmanager.show                      | App\Http\Controllers\Admin\LogController@show                             | web,auth.admin |
+|        | PUT|PATCH | admin/logmanager/{logmanager}                                          | logmanager.update                    | App\Http\Controllers\Admin\LogController@update                           | web,auth.admin |
+|        | DELETE    | admin/logmanager/{logmanager}                                          | logmanager.destroy                   | App\Http\Controllers\Admin\LogController@destroy                          | web,auth.admin |
+|        | GET|HEAD  | admin/logmanager/{logmanager}/edit                                     | logmanager.edit                      | App\Http\Controllers\Admin\LogController@edit                             | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistcampaignmanager                                       | mailinglistcampaignmanager.index     | App\Http\Controllers\Admin\MailingListCampaignManagerController@index     | web,auth.admin |
+|        | POST      | admin/mailinglistcampaignmanager                                       | mailinglistcampaignmanager.store     | App\Http\Controllers\Admin\MailingListCampaignManagerController@store     | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistcampaignmanager/create                                | mailinglistcampaignmanager.create    | App\Http\Controllers\Admin\MailingListCampaignManagerController@create    | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistcampaignmanager/{mailinglistcampaignmanager}          | mailinglistcampaignmanager.show      | App\Http\Controllers\Admin\MailingListCampaignManagerController@show      | web,auth.admin |
+|        | DELETE    | admin/mailinglistcampaignmanager/{mailinglistcampaignmanager}          | mailinglistcampaignmanager.destroy   | App\Http\Controllers\Admin\MailingListCampaignManagerController@destroy   | web,auth.admin |
+|        | PUT|PATCH | admin/mailinglistcampaignmanager/{mailinglistcampaignmanager}          | mailinglistcampaignmanager.update    | App\Http\Controllers\Admin\MailingListCampaignManagerController@update    | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistcampaignmanager/{mailinglistcampaignmanager}/edit     | mailinglistcampaignmanager.edit      | App\Http\Controllers\Admin\MailingListCampaignManagerController@edit      | web,auth.admin |
+|        | POST      | admin/mailinglistimagemanager                                          | mailinglistimagemanager.store        | App\Http\Controllers\Admin\MailingListImageManagerController@store        | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistimagemanager                                          | mailinglistimagemanager.index        | App\Http\Controllers\Admin\MailingListImageManagerController@index        | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistimagemanager/create                                   | mailinglistimagemanager.create       | App\Http\Controllers\Admin\MailingListImageManagerController@create       | web,auth.admin |
+|        | DELETE    | admin/mailinglistimagemanager/{mailinglistimagemanager}                | mailinglistimagemanager.destroy      | App\Http\Controllers\Admin\MailingListImageManagerController@destroy      | web,auth.admin |
+|        | PUT|PATCH | admin/mailinglistimagemanager/{mailinglistimagemanager}                | mailinglistimagemanager.update       | App\Http\Controllers\Admin\MailingListImageManagerController@update       | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistimagemanager/{mailinglistimagemanager}                | mailinglistimagemanager.show         | App\Http\Controllers\Admin\MailingListImageManagerController@show         | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistimagemanager/{mailinglistimagemanager}/edit           | mailinglistimagemanager.edit         | App\Http\Controllers\Admin\MailingListImageManagerController@edit         | web,auth.admin |
+|        | POST      | admin/mailinglistmanager                                               | mailinglistmanager.store             | App\Http\Controllers\Admin\MailingListManagerController@store             | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistmanager                                               | mailinglistmanager.index             | App\Http\Controllers\Admin\MailingListManagerController@index             | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistmanager/create                                        | mailinglistmanager.create            | App\Http\Controllers\Admin\MailingListManagerController@create            | web,auth.admin |
+|        | PUT|PATCH | admin/mailinglistmanager/{mailinglistmanager}                          | mailinglistmanager.update            | App\Http\Controllers\Admin\MailingListManagerController@update            | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistmanager/{mailinglistmanager}                          | mailinglistmanager.show              | App\Http\Controllers\Admin\MailingListManagerController@show              | web,auth.admin |
+|        | DELETE    | admin/mailinglistmanager/{mailinglistmanager}                          | mailinglistmanager.destroy           | App\Http\Controllers\Admin\MailingListManagerController@destroy           | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistmanager/{mailinglistmanager}/edit                     | mailinglistmanager.edit              | App\Http\Controllers\Admin\MailingListManagerController@edit              | web,auth.admin |
+|        | POST      | admin/mailinglistsubscribermanager                                     | mailinglistsubscribermanager.store   | App\Http\Controllers\Admin\MailingListSubscriberManagerController@store   | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistsubscribermanager                                     | mailinglistsubscribermanager.index   | App\Http\Controllers\Admin\MailingListSubscriberManagerController@index   | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistsubscribermanager/create                              | mailinglistsubscribermanager.create  | App\Http\Controllers\Admin\MailingListSubscriberManagerController@create  | web,auth.admin |
+|        | PUT|PATCH | admin/mailinglistsubscribermanager/{mailinglistsubscribermanager}      | mailinglistsubscribermanager.update  | App\Http\Controllers\Admin\MailingListSubscriberManagerController@update  | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistsubscribermanager/{mailinglistsubscribermanager}      | mailinglistsubscribermanager.show    | App\Http\Controllers\Admin\MailingListSubscriberManagerController@show    | web,auth.admin |
+|        | DELETE    | admin/mailinglistsubscribermanager/{mailinglistsubscribermanager}      | mailinglistsubscribermanager.destroy | App\Http\Controllers\Admin\MailingListSubscriberManagerController@destroy | web,auth.admin |
+|        | GET|HEAD  | admin/mailinglistsubscribermanager/{mailinglistsubscribermanager}/edit | mailinglistsubscribermanager.edit    | App\Http\Controllers\Admin\MailingListSubscriberManagerController@edit    | web,auth.admin |
+|        | GET|HEAD  | admin/menumanager                                                      | menumanager.index                    | App\Http\Controllers\Admin\MenuManagerController@index                    | web,auth.admin |
+|        | POST      | admin/menumanager                                                      | menumanager.store                    | App\Http\Controllers\Admin\MenuManagerController@store                    | web,auth.admin |
+|        | GET|HEAD  | admin/menumanager/create                                               | menumanager.create                   | App\Http\Controllers\Admin\MenuManagerController@create                   | web,auth.admin |
+|        | GET|HEAD  | admin/menumanager/{menumanager}                                        | menumanager.show                     | App\Http\Controllers\Admin\MenuManagerController@show                     | web,auth.admin |
+|        | PUT|PATCH | admin/menumanager/{menumanager}                                        | menumanager.update                   | App\Http\Controllers\Admin\MenuManagerController@update                   | web,auth.admin |
+|        | DELETE    | admin/menumanager/{menumanager}                                        | menumanager.destroy                  | App\Http\Controllers\Admin\MenuManagerController@destroy                  | web,auth.admin |
+|        | GET|HEAD  | admin/menumanager/{menumanager}/edit                                   | menumanager.edit                     | App\Http\Controllers\Admin\MenuManagerController@edit                     | web,auth.admin |
+|        | POST      | admin/modulemanager                                                    | modulemanager.store                  | App\Http\Controllers\Admin\ModuleManagerController@store                  | web,auth.admin |
+|        | GET|HEAD  | admin/modulemanager                                                    | modulemanager.index                  | App\Http\Controllers\Admin\ModuleManagerController@index                  | web,auth.admin |
+|        | GET|HEAD  | admin/modulemanager/create                                             | modulemanager.create                 | App\Http\Controllers\Admin\ModuleManagerController@create                 | web,auth.admin |
+|        | PUT|PATCH | admin/modulemanager/{modulemanager}                                    | modulemanager.update                 | App\Http\Controllers\Admin\ModuleManagerController@update                 | web,auth.admin |
+|        | DELETE    | admin/modulemanager/{modulemanager}                                    | modulemanager.destroy                | App\Http\Controllers\Admin\ModuleManagerController@destroy                | web,auth.admin |
+|        | GET|HEAD  | admin/modulemanager/{modulemanager}                                    | modulemanager.show                   | App\Http\Controllers\Admin\ModuleManagerController@show                   | web,auth.admin |
+|        | GET|HEAD  | admin/modulemanager/{modulemanager}/edit                               | modulemanager.edit                   | App\Http\Controllers\Admin\ModuleManagerController@edit                   | web,auth.admin |
+|        | POST      | admin/ordermanager                                                     | ordermanager.store                   | App\Http\Controllers\Admin\OrderManagerController@store                   | web,auth.admin |
+|        | GET|HEAD  | admin/ordermanager                                                     | ordermanager.index                   | App\Http\Controllers\Admin\OrderManagerController@index                   | web,auth.admin |
+|        | GET|HEAD  | admin/ordermanager/create                                              | ordermanager.create                  | App\Http\Controllers\Admin\OrderManagerController@create                  | web,auth.admin |
+|        | DELETE    | admin/ordermanager/{ordermanager}                                      | ordermanager.destroy                 | App\Http\Controllers\Admin\OrderManagerController@destroy                 | web,auth.admin |
+|        | PUT|PATCH | admin/ordermanager/{ordermanager}                                      | ordermanager.update                  | App\Http\Controllers\Admin\OrderManagerController@update                  | web,auth.admin |
+|        | GET|HEAD  | admin/ordermanager/{ordermanager}                                      | ordermanager.show                    | App\Http\Controllers\Admin\OrderManagerController@show                    | web,auth.admin |
+|        | GET|HEAD  | admin/ordermanager/{ordermanager}/edit                                 | ordermanager.edit                    | App\Http\Controllers\Admin\OrderManagerController@edit                    | web,auth.admin |
+|        | POST      | admin/pagemanager                                                      | pagemanager.store                    | App\Http\Controllers\Admin\PageManagerController@store                    | web,auth.admin |
+|        | GET|HEAD  | admin/pagemanager                                                      | pagemanager.index                    | App\Http\Controllers\Admin\PageManagerController@index                    | web,auth.admin |
+|        | GET|HEAD  | admin/pagemanager/create                                               | pagemanager.create                   | App\Http\Controllers\Admin\PageManagerController@create                   | web,auth.admin |
+|        | GET|HEAD  | admin/pagemanager/{pagemanager}                                        | pagemanager.show                     | App\Http\Controllers\Admin\PageManagerController@show                     | web,auth.admin |
+|        | DELETE    | admin/pagemanager/{pagemanager}                                        | pagemanager.destroy                  | App\Http\Controllers\Admin\PageManagerController@destroy                  | web,auth.admin |
+|        | PUT|PATCH | admin/pagemanager/{pagemanager}                                        | pagemanager.update                   | App\Http\Controllers\Admin\PageManagerController@update                   | web,auth.admin |
+|        | GET|HEAD  | admin/pagemanager/{pagemanager}/edit                                   | pagemanager.edit                     | App\Http\Controllers\Admin\PageManagerController@edit                     | web,auth.admin |
+|        | POST      | admin/picturealbummanager                                              | picturealbummanager.store            | App\Http\Controllers\Admin\PictureAlbumManagerController@store            | web,auth.admin |
+|        | GET|HEAD  | admin/picturealbummanager                                              | picturealbummanager.index            | App\Http\Controllers\Admin\PictureAlbumManagerController@index            | web,auth.admin |
+|        | GET|HEAD  | admin/picturealbummanager/create                                       | picturealbummanager.create           | App\Http\Controllers\Admin\PictureAlbumManagerController@create           | web,auth.admin |
+|        | DELETE    | admin/picturealbummanager/{picturealbummanager}                        | picturealbummanager.destroy          | App\Http\Controllers\Admin\PictureAlbumManagerController@destroy          | web,auth.admin |
+|        | PUT|PATCH | admin/picturealbummanager/{picturealbummanager}                        | picturealbummanager.update           | App\Http\Controllers\Admin\PictureAlbumManagerController@update           | web,auth.admin |
+|        | GET|HEAD  | admin/picturealbummanager/{picturealbummanager}                        | picturealbummanager.show             | App\Http\Controllers\Admin\PictureAlbumManagerController@show             | web,auth.admin |
+|        | GET|HEAD  | admin/picturealbummanager/{picturealbummanager}/edit                   | picturealbummanager.edit             | App\Http\Controllers\Admin\PictureAlbumManagerController@edit             | web,auth.admin |
+|        | POST      | admin/picturemanager                                                   | picturemanager.store                 | App\Http\Controllers\Admin\PictureManagerController@store                 | web,auth.admin |
+|        | GET|HEAD  | admin/picturemanager                                                   | picturemanager.index                 | App\Http\Controllers\Admin\PictureManagerController@index                 | web,auth.admin |
+|        | GET|HEAD  | admin/picturemanager/create                                            | picturemanager.create                | App\Http\Controllers\Admin\PictureManagerController@create                | web,auth.admin |
+|        | DELETE    | admin/picturemanager/{picturemanager}                                  | picturemanager.destroy               | App\Http\Controllers\Admin\PictureManagerController@destroy               | web,auth.admin |
+|        | GET|HEAD  | admin/picturemanager/{picturemanager}                                  | picturemanager.show                  | App\Http\Controllers\Admin\PictureManagerController@show                  | web,auth.admin |
+|        | PUT|PATCH | admin/picturemanager/{picturemanager}                                  | picturemanager.update                | App\Http\Controllers\Admin\PictureManagerController@update                | web,auth.admin |
+|        | GET|HEAD  | admin/picturemanager/{picturemanager}/edit                             | picturemanager.edit                  | App\Http\Controllers\Admin\PictureManagerController@edit                  | web,auth.admin |
+|        | POST      | admin/pluginmanager                                                    | pluginmanager.store                  | App\Http\Controllers\Admin\PluginManagerController@store                  | web,auth.admin |
+|        | GET|HEAD  | admin/pluginmanager                                                    | pluginmanager.index                  | App\Http\Controllers\Admin\PluginManagerController@index                  | web,auth.admin |
+|        | GET|HEAD  | admin/pluginmanager/create                                             | pluginmanager.create                 | App\Http\Controllers\Admin\PluginManagerController@create                 | web,auth.admin |
+|        | GET|HEAD  | admin/pluginmanager/{pluginmanager}                                    | pluginmanager.show                   | App\Http\Controllers\Admin\PluginManagerController@show                   | web,auth.admin |
+|        | PUT|PATCH | admin/pluginmanager/{pluginmanager}                                    | pluginmanager.update                 | App\Http\Controllers\Admin\PluginManagerController@update                 | web,auth.admin |
+|        | DELETE    | admin/pluginmanager/{pluginmanager}                                    | pluginmanager.destroy                | App\Http\Controllers\Admin\PluginManagerController@destroy                | web,auth.admin |
+|        | GET|HEAD  | admin/pluginmanager/{pluginmanager}/edit                               | pluginmanager.edit                   | App\Http\Controllers\Admin\PluginManagerController@edit                   | web,auth.admin |
+|        | GET|HEAD  | admin/pollmanager                                                      | pollmanager.index                    | App\Http\Controllers\Admin\PollManagerController@index                    | web,auth.admin |
+|        | POST      | admin/pollmanager                                                      | pollmanager.store                    | App\Http\Controllers\Admin\PollManagerController@store                    | web,auth.admin |
+|        | GET|HEAD  | admin/pollmanager/create                                               | pollmanager.create                   | App\Http\Controllers\Admin\PollManagerController@create                   | web,auth.admin |
+|        | GET|HEAD  | admin/pollmanager/{pollmanager}                                        | pollmanager.show                     | App\Http\Controllers\Admin\PollManagerController@show                     | web,auth.admin |
+|        | PUT|PATCH | admin/pollmanager/{pollmanager}                                        | pollmanager.update                   | App\Http\Controllers\Admin\PollManagerController@update                   | web,auth.admin |
+|        | DELETE    | admin/pollmanager/{pollmanager}                                        | pollmanager.destroy                  | App\Http\Controllers\Admin\PollManagerController@destroy                  | web,auth.admin |
+|        | GET|HEAD  | admin/pollmanager/{pollmanager}/edit                                   | pollmanager.edit                     | App\Http\Controllers\Admin\PollManagerController@edit                     | web,auth.admin |
+|        | GET|HEAD  | admin/productcategorymanager                                           | productcategorymanager.index         | App\Http\Controllers\Admin\ProductCategoryManagerController@index         | web,auth.admin |
+|        | POST      | admin/productcategorymanager                                           | productcategorymanager.store         | App\Http\Controllers\Admin\ProductCategoryManagerController@store         | web,auth.admin |
+|        | GET|HEAD  | admin/productcategorymanager/create                                    | productcategorymanager.create        | App\Http\Controllers\Admin\ProductCategoryManagerController@create        | web,auth.admin |
+|        | GET|HEAD  | admin/productcategorymanager/{productcategorymanager}                  | productcategorymanager.show          | App\Http\Controllers\Admin\ProductCategoryManagerController@show          | web,auth.admin |
+|        | DELETE    | admin/productcategorymanager/{productcategorymanager}                  | productcategorymanager.destroy       | App\Http\Controllers\Admin\ProductCategoryManagerController@destroy       | web,auth.admin |
+|        | PUT|PATCH | admin/productcategorymanager/{productcategorymanager}                  | productcategorymanager.update        | App\Http\Controllers\Admin\ProductCategoryManagerController@update        | web,auth.admin |
+|        | GET|HEAD  | admin/productcategorymanager/{productcategorymanager}/edit             | productcategorymanager.edit          | App\Http\Controllers\Admin\ProductCategoryManagerController@edit          | web,auth.admin |
+|        | GET|HEAD  | admin/productmanager                                                   | productmanager.index                 | App\Http\Controllers\Admin\ProductManagerController@index                 | web,auth.admin |
+|        | POST      | admin/productmanager                                                   | productmanager.store                 | App\Http\Controllers\Admin\ProductManagerController@store                 | web,auth.admin |
+|        | GET|HEAD  | admin/productmanager/create                                            | productmanager.create                | App\Http\Controllers\Admin\ProductManagerController@create                | web,auth.admin |
+|        | DELETE    | admin/productmanager/{productmanager}                                  | productmanager.destroy               | App\Http\Controllers\Admin\ProductManagerController@destroy               | web,auth.admin |
+|        | PUT|PATCH | admin/productmanager/{productmanager}                                  | productmanager.update                | App\Http\Controllers\Admin\ProductManagerController@update                | web,auth.admin |
+|        | GET|HEAD  | admin/productmanager/{productmanager}                                  | productmanager.show                  | App\Http\Controllers\Admin\ProductManagerController@show                  | web,auth.admin |
+|        | GET|HEAD  | admin/productmanager/{productmanager}/edit                             | productmanager.edit                  | App\Http\Controllers\Admin\ProductManagerController@edit                  | web,auth.admin |
+|        | POST      | admin/slideshowmanager                                                 | slideshowmanager.store               | App\Http\Controllers\Admin\SlideShowManagerController@store               | web,auth.admin |
+|        | GET|HEAD  | admin/slideshowmanager                                                 | slideshowmanager.index               | App\Http\Controllers\Admin\SlideShowManagerController@index               | web,auth.admin |
+|        | GET|HEAD  | admin/slideshowmanager/create                                          | slideshowmanager.create              | App\Http\Controllers\Admin\SlideShowManagerController@create              | web,auth.admin |
+|        | DELETE    | admin/slideshowmanager/{slideshowmanager}                              | slideshowmanager.destroy             | App\Http\Controllers\Admin\SlideShowManagerController@destroy             | web,auth.admin |
+|        | PUT|PATCH | admin/slideshowmanager/{slideshowmanager}                              | slideshowmanager.update              | App\Http\Controllers\Admin\SlideShowManagerController@update              | web,auth.admin |
+|        | GET|HEAD  | admin/slideshowmanager/{slideshowmanager}                              | slideshowmanager.show                | App\Http\Controllers\Admin\SlideShowManagerController@show                | web,auth.admin |
+|        | GET|HEAD  | admin/slideshowmanager/{slideshowmanager}/edit                         | slideshowmanager.edit                | App\Http\Controllers\Admin\SlideShowManagerController@edit                | web,auth.admin |
+|        | GET|HEAD  | admin/statisticsmanager                                                | statisticsmanager.index              | App\Http\Controllers\Admin\StatisticsManagerController@index              | web,auth.admin |
+|        | POST      | admin/statisticsmanager                                                | statisticsmanager.store              | App\Http\Controllers\Admin\StatisticsManagerController@store              | web,auth.admin |
+|        | GET|HEAD  | admin/statisticsmanager/create                                         | statisticsmanager.create             | App\Http\Controllers\Admin\StatisticsManagerController@create             | web,auth.admin |
+|        | DELETE    | admin/statisticsmanager/{statisticsmanager}                            | statisticsmanager.destroy            | App\Http\Controllers\Admin\StatisticsManagerController@destroy            | web,auth.admin |
+|        | GET|HEAD  | admin/statisticsmanager/{statisticsmanager}                            | statisticsmanager.show               | App\Http\Controllers\Admin\StatisticsManagerController@show               | web,auth.admin |
+|        | PUT|PATCH | admin/statisticsmanager/{statisticsmanager}                            | statisticsmanager.update             | App\Http\Controllers\Admin\StatisticsManagerController@update             | web,auth.admin |
+|        | GET|HEAD  | admin/statisticsmanager/{statisticsmanager}/edit                       | statisticsmanager.edit               | App\Http\Controllers\Admin\StatisticsManagerController@edit               | web,auth.admin |
+|        | POST      | admin/usermanager                                                      | usermanager.store                    | App\Http\Controllers\Admin\UserManagerController@store                    | web,auth.admin |
+|        | GET|HEAD  | admin/usermanager                                                      | usermanager.index                    | App\Http\Controllers\Admin\UserManagerController@index                    | web,auth.admin |
+|        | GET|HEAD  | admin/usermanager/create                                               | usermanager.create                   | App\Http\Controllers\Admin\UserManagerController@create                   | web,auth.admin |
+|        | DELETE    | admin/usermanager/{usermanager}                                        | usermanager.destroy                  | App\Http\Controllers\Admin\UserManagerController@destroy                  | web,auth.admin |
+|        | PUT|PATCH | admin/usermanager/{usermanager}                                        | usermanager.update                   | App\Http\Controllers\Admin\UserManagerController@update                   | web,auth.admin |
+|        | GET|HEAD  | admin/usermanager/{usermanager}                                        | usermanager.show                     | App\Http\Controllers\Admin\UserManagerController@show                     | web,auth.admin |
+|        | GET|HEAD  | admin/usermanager/{usermanager}/edit                                   | usermanager.edit                     | App\Http\Controllers\Admin\UserManagerController@edit                     | web,auth.admin |
+|        | POST      | admin/userrolemanager                                                  | userrolemanager.store                | App\Http\Controllers\Admin\UserRoleManagerController@store                | web,auth.admin |
+|        | GET|HEAD  | admin/userrolemanager                                                  | userrolemanager.index                | App\Http\Controllers\Admin\UserRoleManagerController@index                | web,auth.admin |
+|        | GET|HEAD  | admin/userrolemanager/create                                           | userrolemanager.create               | App\Http\Controllers\Admin\UserRoleManagerController@create               | web,auth.admin |
+|        | GET|HEAD  | admin/userrolemanager/{userrolemanager}                                | userrolemanager.show                 | App\Http\Controllers\Admin\UserRoleManagerController@show                 | web,auth.admin |
+|        | DELETE    | admin/userrolemanager/{userrolemanager}                                | userrolemanager.destroy              | App\Http\Controllers\Admin\UserRoleManagerController@destroy              | web,auth.admin |
+|        | PUT|PATCH | admin/userrolemanager/{userrolemanager}                                | userrolemanager.update               | App\Http\Controllers\Admin\UserRoleManagerController@update               | web,auth.admin |
+|        | GET|HEAD  | admin/userrolemanager/{userrolemanager}/edit                           | userrolemanager.edit                 | App\Http\Controllers\Admin\UserRoleManagerController@edit                 | web,auth.admin |
+|        | POST      | admin/videoalbummanager                                                | videoalbummanager.store              | App\Http\Controllers\Admin\VideoAlbumManagerController@store              | web,auth.admin |
+|        | GET|HEAD  | admin/videoalbummanager                                                | videoalbummanager.index              | App\Http\Controllers\Admin\VideoAlbumManagerController@index              | web,auth.admin |
+|        | GET|HEAD  | admin/videoalbummanager/create                                         | videoalbummanager.create             | App\Http\Controllers\Admin\VideoAlbumManagerController@create             | web,auth.admin |
+|        | DELETE    | admin/videoalbummanager/{videoalbummanager}                            | videoalbummanager.destroy            | App\Http\Controllers\Admin\VideoAlbumManagerController@destroy            | web,auth.admin |
+|        | PUT|PATCH | admin/videoalbummanager/{videoalbummanager}                            | videoalbummanager.update             | App\Http\Controllers\Admin\VideoAlbumManagerController@update             | web,auth.admin |
+|        | GET|HEAD  | admin/videoalbummanager/{videoalbummanager}                            | videoalbummanager.show               | App\Http\Controllers\Admin\VideoAlbumManagerController@show               | web,auth.admin |
+|        | GET|HEAD  | admin/videoalbummanager/{videoalbummanager}/edit                       | videoalbummanager.edit               | App\Http\Controllers\Admin\VideoAlbumManagerController@edit               | web,auth.admin |
+|        | POST      | admin/videomanager                                                     | videomanager.store                   | App\Http\Controllers\Admin\VideoManagerController@store                   | web,auth.admin |
+|        | GET|HEAD  | admin/videomanager                                                     | videomanager.index                   | App\Http\Controllers\Admin\VideoManagerController@index                   | web,auth.admin |
+|        | GET|HEAD  | admin/videomanager/create                                              | videomanager.create                  | App\Http\Controllers\Admin\VideoManagerController@create                  | web,auth.admin |
+|        | DELETE    | admin/videomanager/{videomanager}                                      | videomanager.destroy                 | App\Http\Controllers\Admin\VideoManagerController@destroy                 | web,auth.admin |
+|        | PUT|PATCH | admin/videomanager/{videomanager}                                      | videomanager.update                  | App\Http\Controllers\Admin\VideoManagerController@update                  | web,auth.admin |
+|        | GET|HEAD  | admin/videomanager/{videomanager}                                      | videomanager.show                    | App\Http\Controllers\Admin\VideoManagerController@show                    | web,auth.admin |
+|        | GET|HEAD  | admin/videomanager/{videomanager}/edit                                 | videomanager.edit                    | App\Http\Controllers\Admin\VideoManagerController@edit                    | web,auth.admin |
+|        | GET|HEAD  | api/user                                                               |                                      | Closure                                                                   | api,auth:api   |
+|        | POST      | chat                                                                   | chat.store                           | App\Http\Controllers\ChatController@store                                 | web            |
+|        | GET|HEAD  | chat                                                                   | chat.index                           | App\Http\Controllers\ChatController@index                                 | web            |
+|        | GET|HEAD  | chat/create                                                            | chat.create                          | App\Http\Controllers\ChatController@create                                | web            |
+|        | GET|HEAD  | chat/{chat}                                                            | chat.show                            | App\Http\Controllers\ChatController@show                                  | web            |
+|        | PUT|PATCH | chat/{chat}                                                            | chat.update                          | App\Http\Controllers\ChatController@update                                | web            |
+|        | DELETE    | chat/{chat}                                                            | chat.destroy                         | App\Http\Controllers\ChatController@destroy                               | web            |
+|        | GET|HEAD  | chat/{chat}/edit                                                       | chat.edit                            | App\Http\Controllers\ChatController@edit                                  | web            |
+|        | GET|HEAD  | comments                                                               | comments.index                       | App\Http\Controllers\CommentsController@index                             | web            |
+|        | POST      | comments                                                               | comments.store                       | App\Http\Controllers\CommentsController@store                             | web            |
+|        | GET|HEAD  | comments/create                                                        | comments.create                      | App\Http\Controllers\CommentsController@create                            | web            |
+|        | DELETE    | comments/{comment}                                                     | comments.destroy                     | App\Http\Controllers\CommentsController@destroy                           | web            |
+|        | PUT|PATCH | comments/{comment}                                                     | comments.update                      | App\Http\Controllers\CommentsController@update                            | web            |
+|        | GET|HEAD  | comments/{comment}                                                     | comments.show                        | App\Http\Controllers\CommentsController@show                              | web            |
+|        | GET|HEAD  | comments/{comment}/edit                                                | comments.edit                        | App\Http\Controllers\CommentsController@edit                              | web            |
+|        | GET|HEAD  | home                                                                   | home                                 | App\Http\Controllers\HomeController@index                                 | web            |
+|        | GET|HEAD  | home/about                                                             | about                                | App\Http\Controllers\HomeController@about                                 | web            |
+|        | GET|HEAD  | home/contact                                                           | contact                              | App\Http\Controllers\HomeController@contact                               | web            |
+|        | GET|HEAD  | home/index                                                             | home                                 | App\Http\Controllers\HomeController@index                                 | web            |
+|        | POST      | links                                                                  | links.store                          | App\Http\Controllers\LinksController@store                                | web            |
+|        | GET|HEAD  | links                                                                  | links.index                          | App\Http\Controllers\LinksController@index                                | web            |
+|        | GET|HEAD  | links/create                                                           | links.create                         | App\Http\Controllers\LinksController@create                               | web            |
+|        | GET|HEAD  | links/{link}                                                           | links.show                           | App\Http\Controllers\LinksController@show                                 | web            |
+|        | PUT|PATCH | links/{link}                                                           | links.update                         | App\Http\Controllers\LinksController@update                               | web            |
+|        | DELETE    | links/{link}                                                           | links.destroy                        | App\Http\Controllers\LinksController@destroy                              | web            |
+|        | GET|HEAD  | links/{link}/edit                                                      | links.edit                           | App\Http\Controllers\LinksController@edit                                 | web            |
+|        | GET|HEAD  | login                                                                  | login                                | App\Http\Controllers\Auth\LoginController@showLoginForm                   | web,guest      |
+|        | POST      | login                                                                  |                                      | App\Http\Controllers\Auth\LoginController@login                           | web,guest      |
+|        | POST      | logout                                                                 | logout                               | App\Http\Controllers\Auth\LoginController@logout                          | web            |
+|        | GET|HEAD  | mailinglist                                                            | mailinglist.index                    | App\Http\Controllers\MailingListController@index                          | web            |
+|        | POST      | mailinglist                                                            | mailinglist.store                    | App\Http\Controllers\MailingListController@store                          | web            |
+|        | GET|HEAD  | mailinglist/create                                                     | mailinglist.create                   | App\Http\Controllers\MailingListController@create                         | web            |
+|        | GET|HEAD  | mailinglist/{mailinglist}                                              | mailinglist.show                     | App\Http\Controllers\MailingListController@show                           | web            |
+|        | PUT|PATCH | mailinglist/{mailinglist}                                              | mailinglist.update                   | App\Http\Controllers\MailingListController@update                         | web            |
+|        | DELETE    | mailinglist/{mailinglist}                                              | mailinglist.destroy                  | App\Http\Controllers\MailingListController@destroy                        | web            |
+|        | GET|HEAD  | mailinglist/{mailinglist}/edit                                         | mailinglist.edit                     | App\Http\Controllers\MailingListController@edit                           | web            |
+|        | GET|HEAD  | page/{url}                                                             | page                                 | App\Http\Controllers\PagesController@index                                | web            |
+|        | POST      | password/email                                                         | password.email                       | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail     | web,guest      |
+|        | GET|HEAD  | password/reset                                                         | password.request                     | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm    | web,guest      |
+|        | POST      | password/reset                                                         |                                      | App\Http\Controllers\Auth\ResetPasswordController@reset                   | web,guest      |
+|        | GET|HEAD  | password/reset/{token}                                                 | password.reset                       | App\Http\Controllers\Auth\ResetPasswordController@showResetForm           | web,guest      |
+|        | GET|HEAD  | pictures                                                               | pictures.index                       | App\Http\Controllers\PicturesController@index                             | web            |
+|        | POST      | pictures                                                               | pictures.store                       | App\Http\Controllers\PicturesController@store                             | web            |
+|        | GET|HEAD  | pictures/create                                                        | pictures.create                      | App\Http\Controllers\PicturesController@create                            | web            |
+|        | DELETE    | pictures/{picture}                                                     | pictures.destroy                     | App\Http\Controllers\PicturesController@destroy                           | web            |
+|        | GET|HEAD  | pictures/{picture}                                                     | pictures.show                        | App\Http\Controllers\PicturesController@show                              | web            |
+|        | PUT|PATCH | pictures/{picture}                                                     | pictures.update                      | App\Http\Controllers\PicturesController@update                            | web            |
+|        | GET|HEAD  | pictures/{picture}/edit                                                | pictures.edit                        | App\Http\Controllers\PicturesController@edit                              | web            |
+|        | POST      | pollcharts                                                             | pollcharts.store                     | App\Http\Controllers\PollChartsController@store                           | web            |
+|        | GET|HEAD  | pollcharts                                                             | pollcharts.index                     | App\Http\Controllers\PollChartsController@index                           | web            |
+|        | GET|HEAD  | pollcharts/create                                                      | pollcharts.create                    | App\Http\Controllers\PollChartsController@create                          | web            |
+|        | PUT|PATCH | pollcharts/{pollchart}                                                 | pollcharts.update                    | App\Http\Controllers\PollChartsController@update                          | web            |
+|        | GET|HEAD  | pollcharts/{pollchart}                                                 | pollcharts.show                      | App\Http\Controllers\PollChartsController@show                            | web            |
+|        | DELETE    | pollcharts/{pollchart}                                                 | pollcharts.destroy                   | App\Http\Controllers\PollChartsController@destroy                         | web            |
+|        | GET|HEAD  | pollcharts/{pollchart}/edit                                            | pollcharts.edit                      | App\Http\Controllers\PollChartsController@edit                            | web            |
+|        | GET|HEAD  | polls                                                                  | polls.index                          | App\Http\Controllers\PollsController@index                                | web            |
+|        | POST      | polls                                                                  | polls.store                          | App\Http\Controllers\PollsController@store                                | web            |
+|        | GET|HEAD  | polls/create                                                           | polls.create                         | App\Http\Controllers\PollsController@create                               | web            |
+|        | GET|HEAD  | polls/{poll}                                                           | polls.show                           | App\Http\Controllers\PollsController@show                                 | web            |
+|        | DELETE    | polls/{poll}                                                           | polls.destroy                        | App\Http\Controllers\PollsController@destroy                              | web            |
+|        | PUT|PATCH | polls/{poll}                                                           | polls.update                         | App\Http\Controllers\PollsController@update                               | web            |
+|        | GET|HEAD  | polls/{poll}/edit                                                      | polls.edit                           | App\Http\Controllers\PollsController@edit                                 | web            |
+|        | GET|HEAD  | privatemessages                                                        | privatemessages.index                | App\Http\Controllers\PrivateMessagesController@index                      | web            |
+|        | POST      | privatemessages                                                        | privatemessages.store                | App\Http\Controllers\PrivateMessagesController@store                      | web            |
+|        | GET|HEAD  | privatemessages/create                                                 | privatemessages.create               | App\Http\Controllers\PrivateMessagesController@create                     | web            |
+|        | DELETE    | privatemessages/{privatemessage}                                       | privatemessages.destroy              | App\Http\Controllers\PrivateMessagesController@destroy                    | web            |
+|        | GET|HEAD  | privatemessages/{privatemessage}                                       | privatemessages.show                 | App\Http\Controllers\PrivateMessagesController@show                       | web            |
+|        | PUT|PATCH | privatemessages/{privatemessage}                                       | privatemessages.update               | App\Http\Controllers\PrivateMessagesController@update                     | web            |
+|        | GET|HEAD  | privatemessages/{privatemessage}/edit                                  | privatemessages.edit                 | App\Http\Controllers\PrivateMessagesController@edit                       | web            |
+|        | POST      | profile                                                                | profile.store                        | App\Http\Controllers\ProfileController@store                              | web            |
+|        | GET|HEAD  | profile                                                                | profile.index                        | App\Http\Controllers\ProfileController@index                              | web            |
+|        | GET|HEAD  | profile/create                                                         | profile.create                       | App\Http\Controllers\ProfileController@create                             | web            |
+|        | GET|HEAD  | profile/{profile}                                                      | profile.show                         | App\Http\Controllers\ProfileController@show                               | web            |
+|        | PUT|PATCH | profile/{profile}                                                      | profile.update                       | App\Http\Controllers\ProfileController@update                             | web            |
+|        | DELETE    | profile/{profile}                                                      | profile.destroy                      | App\Http\Controllers\ProfileController@destroy                            | web            |
+|        | GET|HEAD  | profile/{profile}/edit                                                 | profile.edit                         | App\Http\Controllers\ProfileController@edit                               | web            |
+|        | POST      | register                                                               |                                      | App\Http\Controllers\Auth\RegisterController@register                     | web,guest      |
+|        | GET|HEAD  | register                                                               | register                             | App\Http\Controllers\Auth\RegisterController@showRegistrationForm         | web,guest      |
+|        | GET|HEAD  | searchpages                                                            | searchpages.index                    | App\Http\Controllers\SearchPagesController@index                          | web            |
+|        | POST      | searchpages                                                            | searchpages.store                    | App\Http\Controllers\SearchPagesController@store                          | web            |
+|        | GET|HEAD  | searchpages/create                                                     | searchpages.create                   | App\Http\Controllers\SearchPagesController@create                         | web            |
+|        | DELETE    | searchpages/{searchpage}                                               | searchpages.destroy                  | App\Http\Controllers\SearchPagesController@destroy                        | web            |
+|        | GET|HEAD  | searchpages/{searchpage}                                               | searchpages.show                     | App\Http\Controllers\SearchPagesController@show                           | web            |
+|        | PUT|PATCH | searchpages/{searchpage}                                               | searchpages.update                   | App\Http\Controllers\SearchPagesController@update                         | web            |
+|        | GET|HEAD  | searchpages/{searchpage}/edit                                          | searchpages.edit                     | App\Http\Controllers\SearchPagesController@edit                           | web            |
+|        | GET|HEAD  | store                                                                  | store.index                          | App\Http\Controllers\StoreController@index                                | web            |
+|        | POST      | store                                                                  | store.store                          | App\Http\Controllers\StoreController@store                                | web            |
+|        | GET|HEAD  | store/create                                                           | store.create                         | App\Http\Controllers\StoreController@create                               | web            |
+|        | GET|HEAD  | store/{store}                                                          | store.show                           | App\Http\Controllers\StoreController@show                                 | web            |
+|        | PUT|PATCH | store/{store}                                                          | store.update                         | App\Http\Controllers\StoreController@update                               | web            |
+|        | DELETE    | store/{store}                                                          | store.destroy                        | App\Http\Controllers\StoreController@destroy                              | web            |
+|        | GET|HEAD  | store/{store}/edit                                                     | store.edit                           | App\Http\Controllers\StoreController@edit                                 | web            |
+|        | GET|HEAD  | twitter                                                                | twitter.index                        | App\Http\Controllers\TwitterController@index                              | web            |
+|        | POST      | twitter                                                                | twitter.store                        | App\Http\Controllers\TwitterController@store                              | web            |
+|        | GET|HEAD  | twitter/create                                                         | twitter.create                       | App\Http\Controllers\TwitterController@create                             | web            |
+|        | DELETE    | twitter/{twitter}                                                      | twitter.destroy                      | App\Http\Controllers\TwitterController@destroy                            | web            |
+|        | GET|HEAD  | twitter/{twitter}                                                      | twitter.show                         | App\Http\Controllers\TwitterController@show                               | web            |
+|        | PUT|PATCH | twitter/{twitter}                                                      | twitter.update                       | App\Http\Controllers\TwitterController@update                             | web            |
+|        | GET|HEAD  | twitter/{twitter}/edit                                                 | twitter.edit                         | App\Http\Controllers\TwitterController@edit                               | web            |
+|        | GET|HEAD  | videos                                                                 | videos.index                         | App\Http\Controllers\VideosController@index                               | web            |
+|        | POST      | videos                                                                 | videos.store                         | App\Http\Controllers\VideosController@store                               | web            |
+|        | GET|HEAD  | videos/create                                                          | videos.create                        | App\Http\Controllers\VideosController@create                              | web            |
+|        | GET|HEAD  | videos/{video}                                                         | videos.show                          | App\Http\Controllers\VideosController@show                                | web            |
+|        | PUT|PATCH | videos/{video}                                                         | videos.update                        | App\Http\Controllers\VideosController@update                              | web            |
+|        | DELETE    | videos/{video}                                                         | videos.destroy                       | App\Http\Controllers\VideosController@destroy                             | web            |
+|        | GET|HEAD  | videos/{video}/edit                                                    | videos.edit                          | App\Http\Controllers\VideosController@edit                                | web            |
++--------+-----------+------------------------------------------------------------------------+--------------------------------------+---------------------------------------------------------------------------+----------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
