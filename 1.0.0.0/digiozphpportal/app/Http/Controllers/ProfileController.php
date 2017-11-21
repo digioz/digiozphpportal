@@ -7,6 +7,7 @@ use Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Profile;
 
 class ProfileController extends Controller
 {
@@ -22,7 +23,10 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('profile.index');
+        $user = Auth::user();
+        $profile = Profile::where('user_id', $user->id)->first();
+
+        return view('profile.index', compact('profile'));
     }
 
     public function changepassword()
@@ -40,11 +44,11 @@ class ProfileController extends Controller
       $validator = Validator::make($data, [
         'oldpassword' => 'required',
         'newpassword' => 'required|same:newpassword',
-        'newpasswordconfirm' => 'required|same:newpassword',     
+        'newpasswordconfirm' => 'required|same:newpassword',
       ], $messages);
 
       return $validator;
-    }  
+    }
 
     public function changepasswordprocess(Request $request)
     {
@@ -59,31 +63,60 @@ class ProfileController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput();
             }
             else
-            {  
+            {
                 $current_password = Auth::User()->password;
-           
+
                 if(Hash::check($request_data['oldpassword'], $current_password))
-                {           
-                    $user_id = Auth::User()->id;                       
+                {
+                    $user_id = Auth::User()->id;
                     $obj_user = User::find($user_id);
                     $obj_user->password = Hash::make($request_data['newpassword']);;
-                    $obj_user->save(); 
+                    $obj_user->save();
                     //return "ok";
                     return redirect()->to('profile');
                 }
                 else
-                {           
+                {
                     $error = array('oldpassword' => 'Please enter correct current password');
-                    //return response()->json(array('error' => $error), 400); 
-                    return redirect()->back()->withErrors($validator)->withInput();  
+                    //return response()->json(array('error' => $error), 400);
+                    return redirect()->back()->withErrors($validator)->withInput();
                 }
-            }        
+            }
         }
         else
         {
             return redirect()->to('/');
-        }  
+        }
 
         return view('profile.changepassword');
+    }
+
+    public function update(Request $request, $id)
+    {
+        if(Auth::Check())
+        {
+            $user_id = Auth::User()->id;
+            $request->merge(array('user_id' => $user_id));
+
+            // Update email if needed
+            $email = $request->input('email');
+            // TODO - Update Email
+
+            // Set to false if birthday_visible not checked
+            if ($request->input('birthday_visible') == null)
+            {
+                $request->request->add(['birthday_visible' => false]);
+            }
+
+            Profile::find($id)->update($request->all());
+            return redirect()->route('profile.index')
+                            ->with('success','Profile updated successfully');
+        }
+        else
+        {
+            return redirect()->to('/');
+        }
+
+        return view('home');
     }
 }
