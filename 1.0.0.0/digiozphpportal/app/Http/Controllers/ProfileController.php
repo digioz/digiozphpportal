@@ -99,8 +99,14 @@ class ProfileController extends Controller
             $request->merge(array('user_id' => $user_id));
 
             // Update email if needed
+            $user = User::where('id', $user_id)->first();
             $email = $request->input('email');
-            // TODO - Update Email
+
+            if ($user->email != $email)
+            {
+                $user->email = $email;
+                $user->update($request->only(['email']));
+            }
 
             // Set to false if birthday_visible not checked
             if ($request->input('birthday_visible') == null)
@@ -109,7 +115,7 @@ class ProfileController extends Controller
             }
 
             Profile::find($id)->update($request->all());
-            return redirect()->route('profile.index')
+            return redirect()->route('home')
                             ->with('success','Profile updated successfully');
         }
         else
@@ -117,6 +123,6 @@ class ProfileController extends Controller
             return redirect()->to('/');
         }
 
-        return view('home');
+        return redirect()->route('home');
     }
 }
