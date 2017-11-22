@@ -106,22 +106,13 @@
                     
                     <span style="padding-left:30px;">
                         @if(Auth::user())
-                        Logged in as <a href="{{ route('profile.index') }}">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a>.
+                        Logged in as <a href="{{ route('profile.index') }}">{{{isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a>.
                         @endif
                     </span>
 
                 </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Who Is Online</h3>
-                </div>
-                <div class="panel-body">
-                    <div>
-                        <span>Visitors: </span>2
-                    </div>
-                </div>
-            </div>
+            @include('menus.whoisonline')
             <!--<div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Product Categories</h3>

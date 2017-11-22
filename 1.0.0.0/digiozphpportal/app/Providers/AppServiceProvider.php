@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Menu;
 use App\Models\Config;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -44,6 +45,12 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('menus.leftnav', function($view)
 		{
 			$view->with('menus', Menu::where('location', 'LeftMenu')->where('visible', true)->get());
+		});
+
+        // Who Is Online Menu Data
+        view()->composer('menus.whoisonline', function($view)
+		{
+			$view->with('visitorcount', DB::table('sessions')->select('*')->count());
 		});
     }
 

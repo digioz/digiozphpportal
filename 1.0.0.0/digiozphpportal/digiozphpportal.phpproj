@@ -280,6 +280,7 @@
     <Compile Include="resources\views\mailinglist\index.blade.php" />
     <Compile Include="resources\views\menus\leftnav.blade.php" />
     <Compile Include="resources\views\menus\topnav.blade.php" />
+    <Compile Include="resources\views\menus\whoisonline.blade.php" />
     <Compile Include="resources\views\page\index.blade.php" />
     <Compile Include="resources\views\pictures\index.blade.php" />
     <Compile Include="resources\views\pollcharts\index.blade.php" />
