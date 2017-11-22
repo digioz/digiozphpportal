@@ -184,6 +184,7 @@
     <Compile Include="database\migrations\2017_10_18_130018_create_visitor_sessions_table.php" />
     <Compile Include="database\migrations\2017_10_18_130023_create_zones_table.php" />
     <Compile Include="database\migrations\2017_10_20_133014_create_links_table.php" />
+    <Compile Include="database\migrations\2017_11_22_155719_create_sessions_table.php" />
     <Compile Include="database\seeds\AnnouncementsTableSeeder.php" />
     <Compile Include="database\seeds\ConfigsTableSeeder.php" />
     <Compile Include="database\seeds\DatabaseSeeder.php" />
