@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PagesTableSeeder::class);
         $this->call(AnnouncementsTableSeeder::class);
         $this->call(MenusTableSeeder::class);
-        $this->call(PagesTableSeeder::class);
         $this->call(PluginsTableSeeder::class);
         $this->call(ZonesTableSeeder::class);
     }
