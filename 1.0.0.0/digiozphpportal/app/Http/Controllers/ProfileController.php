@@ -115,19 +115,44 @@ class ProfileController extends Controller
                 $request->request->add(['birthday_visible' => false]);
             }
 
-            // Make sure it is an image
-            $this->validate($request, [
-                'image' => 'sometimes|mimes:jpg,jpeg,bmp,png,gif|max:10000',
-            ]);
-
-            $image = $request->file('image');
-
-            if ($image != null)
+            // Check if there is a Gravatar option selected
+            if ($request->input('usegravatar') == true)
             {
-                $image_ext = $image->getClientOriginalExtension();
+                $eml = $user->email;
+                $gravemail = md5( strtolower( trim( $eml ) ) );
+                $gravsrc = "http://www.gravatar.com/avatar/".$gravemail."?size=120";
+                $gravcheck = "http://www.gravatar.com/avatar/".$gravemail."?d=404&size=120";
+                $response = get_headers($gravcheck);
+                $grav_img = "";
 
-                if ($image_ext == "jpg" || $image_ext == "png" || $image_ext == "bmp" || $image_ext == "gif")
+                if ($response[0] != "HTTP/1.0 404 Not Found"){
+                    $grav_img = $gravsrc;
+                }
+
+                $image_ext = "jpeg";
+                $image_name = time().'.'.$image_ext;
+
+                $destinationPath = public_path('/images/avatar/full');
+                copy($grav_img, $destinationPath .'/'.$image_name);
+
+                $destinationPath = public_path('/images/avatar/thumb');
+                copy($grav_img, $destinationPath .'/'.$image_name);
+
+                $request->merge(array('avatar' => $image_name));
+            }
+            else
+            {
+                // Make sure it is an image
+                $this->validate($request, [
+                    'image' => 'sometimes|mimes:jpg,jpeg,bmp,png,gif|max:10000',
+                ]);
+
+                $image = $request->file('image');
+
+                if ($image != null)
                 {
+                    $image_ext = $image->getClientOriginalExtension();
+
                     $image_name = time().'.'.$image_ext;
                     $destinationPath = public_path('/images/avatar/full');
 
@@ -149,9 +174,6 @@ class ProfileController extends Controller
                     $request->merge(array('avatar' => $image_name));
                 }
             }
-
-            // Check if there is a Gravatar option selected
-            // TODO - Fetch the gravatar image
 
             Profile::find($id)->update($request->all());
             return redirect()->route('home')

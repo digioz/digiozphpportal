@@ -391,7 +391,7 @@
                                         </a><br>
                                     @endif
                                     <br>
-                                    For best results, use an image with euqal width and height.
+                                    For best results, use an image with equal width and height.
                                     <input class="form-control" type="file" name="image" id="image">
                                 </div>
                             </div>
