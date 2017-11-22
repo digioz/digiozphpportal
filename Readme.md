@@ -16,6 +16,7 @@ The DigiOz PHP Portal is a Laravel Framework based Content Management System (CM
 - PDO PHP Extension
 - Mbstring PHP Extension
 - Tokenizer PHP Extension
+- php_fileinfo Extension for image resizing using Intervention (http://image.intervention.io/)
 
 ## Contributing
 

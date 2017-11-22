@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Profile;
+use Intervention\Image\Facades\Image as Image;
 
 class ProfileController extends Controller
 {
@@ -113,6 +114,44 @@ class ProfileController extends Controller
             {
                 $request->request->add(['birthday_visible' => false]);
             }
+
+            // Make sure it is an image
+            $this->validate($request, [
+                'image' => 'sometimes|mimes:jpg,jpeg,bmp,png,gif|max:10000',
+            ]);
+
+            $image = $request->file('image');
+
+            if ($image != null)
+            {
+                $image_ext = $image->getClientOriginalExtension();
+
+                if ($image_ext == "jpg" || $image_ext == "png" || $image_ext == "bmp" || $image_ext == "gif")
+                {
+                    $image_name = time().'.'.$image_ext;
+                    $destinationPath = public_path('/images/avatar/full');
+
+                    // Add full sized image
+                    $image->move($destinationPath, $image_name);
+
+                    // Put together the thumbnail image path
+                    $thumb_path = public_path('/images/avatar/thumb').'/'.$image_name;
+
+                    // open the full image file and read it, converting it to an intervention image
+                    $img = Image::make($destinationPath . '/'. $image_name);
+
+                    // resize image instance
+                    $img->resize(120, 120);
+
+                    // save image in desired format
+                    $img->save($thumb_path);
+
+                    $request->merge(array('avatar' => $image_name));
+                }
+            }
+
+            // Check if there is a Gravatar option selected
+            // TODO - Fetch the gravatar image
 
             Profile::find($id)->update($request->all());
             return redirect()->route('home')

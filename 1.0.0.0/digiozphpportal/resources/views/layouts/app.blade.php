@@ -11,11 +11,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     
-    <link href="{{asset('css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('js/jquery-ui.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
-    <script src="{{asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     @yield('head')
 </head>
 <body>
