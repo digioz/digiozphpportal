@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin'], function() {
     Route::resource('configurationmanager', 'Admin\ConfigurationManagerController');
     Route::get('databaseutilities/backup', 'Admin\DatabaseUtilitiesController@backup')->name('databasebackup');
     Route::get('databaseutilities/query', 'Admin\DatabaseUtilitiesController@query')->name('databasequery');
+    Route::post('databaseutilities/queryprocess', 'Admin\DatabaseUtilitiesController@queryprocess')->name('databasequeryprocess');
     Route::get('databaseutilities/execute', 'Admin\DatabaseUtilitiesController@execute')->name('databaseexecute');
     Route::resource('databaseutilities', 'Admin\DatabaseUtilitiesController');
     Route::resource('filemanager', 'Admin\FileManagerController');

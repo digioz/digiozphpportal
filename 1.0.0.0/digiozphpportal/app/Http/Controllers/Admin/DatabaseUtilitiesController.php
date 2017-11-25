@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -29,7 +30,18 @@ class DatabaseUtilitiesController extends Controller
 
     public function query()
     {
-        return view('admin.databaseutilities.query');
+        $tables = DB::select('SHOW TABLES');
+
+        return view('admin.databaseutilities.query', compact('tables'));
+    }
+
+    public function queryprocess(Request $request)
+    {
+        $table_name = $request->input('table');
+
+        $data = DB::table($table_name)->get()->toArray();
+
+        return view('admin.databaseutilities.queryprocess', compact('data'));
     }
 
     public function execute()
