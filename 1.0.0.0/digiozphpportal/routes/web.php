@@ -34,6 +34,9 @@ Route::group(['middleware' => 'auth.admin', 'prefix' => 'admin'], function() {
     Route::resource('commentmanager', 'Admin\CommentManagerController');
     Route::resource('commentpostsmanager', 'Admin\CommentPostsManagerController');
     Route::resource('configurationmanager', 'Admin\ConfigurationManagerController');
+    Route::get('databaseutilities/backup', 'Admin\DatabaseUtilitiesController@backup')->name('databasebackup');
+    Route::get('databaseutilities/query', 'Admin\DatabaseUtilitiesController@query')->name('databasequery');
+    Route::get('databaseutilities/execute', 'Admin\DatabaseUtilitiesController@execute')->name('databaseexecute');
     Route::resource('databaseutilities', 'Admin\DatabaseUtilitiesController');
     Route::resource('filemanager', 'Admin\FileManagerController');
     Route::resource('linkcategorymanager', 'Admin\LinkCategoryManagerController');

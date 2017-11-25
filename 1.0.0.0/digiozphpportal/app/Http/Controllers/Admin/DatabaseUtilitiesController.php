@@ -21,4 +21,19 @@ class DatabaseUtilitiesController extends Controller
     {
         return view('admin.databaseutilities.index');
     }
+
+    public function backup()
+    {
+        return view('admin.databaseutilities.backup');
+    }
+
+    public function query()
+    {
+        return view('admin.databaseutilities.query');
+    }
+
+    public function execute()
+    {
+        return view('admin.databaseutilities.execute');
+    }
 }

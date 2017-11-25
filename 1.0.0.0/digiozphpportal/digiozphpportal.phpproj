@@ -9,6 +9,12 @@
     <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
     <SpecificPageValue>public/index.php</SpecificPageValue>
     <StartAction>SpecificPage</StartAction>
+    <SaveServerSettingsInUserFile>false</SaveServerSettingsInUserFile>
+    <Runtime>PHP</Runtime>
+    <RuntimeVersion>7.1</RuntimeVersion>
+    <EnvName>PHPDev</EnvName>
+    <PHPDevHostName>localhost</PHPDevHostName>
+    <PHPDevAutoPort>true</PHPDevAutoPort>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <IncludeDebugInformation>true</IncludeDebugInformation>
@@ -235,7 +241,10 @@
     <Compile Include="resources\views\admin\configurationmanager\form.blade.php" />
     <Compile Include="resources\views\admin\configurationmanager\index.blade.php" />
     <Compile Include="resources\views\admin\configurationmanager\show.blade.php" />
+    <Compile Include="resources\views\admin\databaseutilities\backup.blade.php" />
+    <Compile Include="resources\views\admin\databaseutilities\execute.blade.php" />
     <Compile Include="resources\views\admin\databaseutilities\index.blade.php" />
+    <Compile Include="resources\views\admin\databaseutilities\query.blade.php" />
     <Compile Include="resources\views\admin\filemanager\index.blade.php" />
     <Compile Include="resources\views\admin\forum\index.blade.php" />
     <Compile Include="resources\views\admin\index.blade.php" />

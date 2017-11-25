@@ -51,7 +51,6 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-
                         <li class="active"><a href="{{ route('admin.index') }}">Dashboard</a></li>
                         <li class="active"><a href="{{ route('pagemanager.index') }}">Page Manager</a></li>
                         <li class="active"><a href="{{ route('configurationmanager.index') }}">Configuration</a></li>
@@ -85,34 +84,36 @@
                     <h3 class="panel-title">User</h3>
                 </div>
                 <div class="panel-body">
-                    <!-- Authentication Links -->
-                    @guest
-                    <li>
-                        <a href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('register') }}">Register</a>
-                    </li>
-                    @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    @endguest
+                    <ul>
+                        @guest
+                        <li>
+                            <a href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('register') }}">Register</a>
+                        </li>
+                        @else
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                Log off
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{csrf_field() }}
+                            </form>
+                        </li>
+                        <li>
+                            <a href="{{ route('profile.index') }}">My Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('privatemessages.index') }}">Private Messages</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('changepassword') }}">Change Password</a>
+                        </li>
+                        @endguest
+                    </ul>
                 </div>
             </div>
         </div>
