@@ -245,7 +245,7 @@
     <Compile Include="resources\views\admin\databaseutilities\execute.blade.php" />
     <Compile Include="resources\views\admin\databaseutilities\index.blade.php" />
     <Compile Include="resources\views\admin\databaseutilities\query.blade.php" />
-    <Compile Include="resources\views\admin\databaseutilities\queryprocess.php" />
+    <Compile Include="resources\views\admin\databaseutilities\queryprocess.blade.php" />
     <Compile Include="resources\views\admin\filemanager\index.blade.php" />
     <Compile Include="resources\views\admin\forum\index.blade.php" />
     <Compile Include="resources\views\admin\index.blade.php" />

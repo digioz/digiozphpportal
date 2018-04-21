@@ -39,9 +39,9 @@ class DatabaseUtilitiesController extends Controller
     {
         $table_name = $request->input('table');
 
-        $data = DB::table($table_name)->get()->toArray();
+        $datas = DB::table($table_name)->get()->toArray();
 
-        return view('admin.databaseutilities.queryprocess', compact('data'));
+        return view('admin.databaseutilities.queryprocess', compact('datas'));
     }
 
     public function execute()

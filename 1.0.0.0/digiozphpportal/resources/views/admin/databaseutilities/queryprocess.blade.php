@@ -15,13 +15,9 @@
     </tbody>
 </table>
 
-<p>
-    {!! $datas->links() !!}
-</p>
-
 
 <div>
-    <a href="{{ route('databaseutilities.query') }}">Back to Query</a>
+    <a href="{{ route('databaseutilities.index') }}">Back to List</a>
 </div>
 
 @endsection
