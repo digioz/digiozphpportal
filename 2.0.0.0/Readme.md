@@ -1,6 +1,6 @@
 ﻿# DigiOz PHP Portal
 
-The DigiOz PHP Portal version 1.0.0.0 is a Laravel 5.x Framework based Content Management System (CMS) which uses MySQL Database to generate an instant website for webmasters to use for private or business use. 
+The DigiOz PHP Portal version 2.0.0.0 is a Laravel 7.x Framework based Content Management System (CMS) which uses MySQL Database to generate an instant website for webmasters to use for private or business use. 
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ The DigiOz PHP Portal version 1.0.0.0 is a Laravel 5.x Framework based Content M
 
 ### Prerequisites
 
-- PHP >= 5.5.9
+- PHP >= 7.2.5
 - OpenSSL PHP Extension
 - PDO PHP Extension
 - Mbstring PHP Extension
